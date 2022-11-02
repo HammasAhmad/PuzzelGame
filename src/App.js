@@ -4,11 +4,11 @@ import './app.css'
 function App() {
   const [input, setInput] = useState('')
   const [message, setMessage] = useState('')
+  const [messageVal, setMessageVal] = useState(false)
   const [randomNum, setRandomNum] = useState(null)
   const dragItem = useRef();
   const dragOverItem = useRef();
   let val = (input * input)
-  console.log(message)
   const isAscending = (array) => array !== '' ? array?.map((a, i) => a > array[i + 1]).indexOf(true) === -1 : ''
   function handler(e) {
     e.preventDefault()
@@ -25,20 +25,21 @@ function App() {
   }
   useEffect(() => {
     if (input <= 1 || input === '') {
-      setMessage('')
       setRandomNum(null)
+      setMessage('')
     }
-    setMessage('')
   }, [input])
 
   useEffect(() => {
     if (isAscending(randomNum) !== true) {
-      setMessage('')
+      return
     } else {
       setMessage('welcome to the team')
-      alert(message)
+      setMessageVal(true)
+      setRandomNum(null)
     }
   })
+  console.log(message)
 
   function handleDragStart(e, position) {
     dragItem.current = position;
@@ -60,7 +61,8 @@ function App() {
   return (
     <div className="App">
       <form onSubmit={handler} style={{ margin: '20px 0' }}>
-        <input className="input" type="number" min={2} value={input} onChange={(e) => {
+        <input className="input" type="number" min={1} value={input} onChange={(e) => {
+          setInput('')
           if (e.target.value < 6) {
             setInput(e.target.value)
           }
@@ -68,6 +70,7 @@ function App() {
         <input className="btn" type="submit" value="submit" />
       </form>
       <h1>Puzzel Game</h1>
+      <h3>Put Any number from 2 to 5</h3>
 
 
       <div className={
@@ -78,10 +81,6 @@ function App() {
       }>
         {randomNum?.map((item, index) => {
           return <div draggable
-            // onDragStart={(e) => handleDragStart(e, i)}
-            // onDragEnter={(e) => handleDragEnter(e, i)}
-            // onDragOver={(e) => handleDragOver(e, i)}
-            // onDragEnd={(e) => handleDrop(e, i)}
             onDragStart={(e) => handleDragStart(e, index)}
             onDragEnter={(e) => handleDragEnter(e, index)}
             onDragEnd={handleDrop}
@@ -92,7 +91,7 @@ function App() {
           </div>
         })}
       </div>
-    </div>
+    </div >
   );
 }
 
