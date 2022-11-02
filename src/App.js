@@ -29,7 +29,6 @@ function App() {
       setRandomNum(null)
     }
     setMessage('')
-
   }, [input])
 
   useEffect(() => {
@@ -37,8 +36,6 @@ function App() {
       setMessage('')
     } else {
       setMessage('welcome to the team')
-    }
-    if (message !== '') {
       alert(message)
     }
   })
@@ -63,7 +60,7 @@ function App() {
   return (
     <div className="App">
       <form onSubmit={handler} style={{ margin: '20px 0' }}>
-        <input className="input" type="number" min={1} value={input} onChange={(e) => {
+        <input className="input" type="number" min={2} value={input} onChange={(e) => {
           if (e.target.value < 6) {
             setInput(e.target.value)
           }
