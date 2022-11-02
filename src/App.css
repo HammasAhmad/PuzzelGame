@@ -1,38 +1,80 @@
 .App {
-  text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input {
+    padding: 10px;
+    margin-right: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn {
+    padding: 12px;
+    border-radius: 5px;
+    background: palevioletred;
+    color: white;
+    outline: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-gridtwo {
+    display: grid;
+    justify-items: center;
+    background-color: black;
+    grid-gap: 15px;
+    margin-top: 50px;
+    grid-template-columns: 100px 100px;
 }
 
-.App-link {
-  color: #61dafb;
+.main-grid-three {
+    display: grid;
+    justify-items: center;
+    background-color: black;
+    grid-gap: 15px;
+    margin-top: 50px;
+    grid-template-columns: 100px 100px 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-grid-four {
+    display: grid;
+    justify-items: center;
+    background-color: black;
+    grid-gap: 15px;
+    margin-top: 50px;
+    grid-template-columns: 100px 100px 100px 100px;
+}
+
+.main-grid-five {
+    display: grid;
+    justify-items: center;
+    background-color: black;
+    grid-gap: 15px;
+    margin-top: 50px;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+}
+
+.grid-block {
+    width: 80px;
+    height: 80px;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    align-items: center;
+}
+
+.border {
+    border: 2px solid blueviolet;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
