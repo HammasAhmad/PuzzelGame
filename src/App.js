@@ -60,36 +60,40 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={handler} style={{ margin: '20px 0' }}>
-        <input className="input" type="number" min={1} value={input} onChange={(e) => {
-          setInput('')
-          if (e.target.value < 6) {
-            setInput(e.target.value)
-          }
-        }} />
-        <input className="btn" type="submit" value="submit" />
-      </form>
-      <h1>Puzzel Game</h1>
-      <h3>Put Any number from 2 to 5</h3>
+      <div className="w-full h-screen bg  shadow-xl">
+        <div style={{width:'500px',display:'flex',flexDirection:'column',alignItems:'center'}}>
+          <form onSubmit={handler} style={{ margin: '20px 0' }}>
+            <input className="input" type="number" min={1} value={input} onChange={(e) => {
+              setInput('')
+              if (e.target.value < 6) {
+                setInput(e.target.value)
+              }
+            }} />
+            <input className="btn" type="submit" value="submit" />
+          </form>
+          <h1>Puzzel Game</h1>
+          <h3>Put Any number from 2 to 5</h3>
 
 
-      <div className={
-        (input < 3 ? 'main-gridtwo ' : '')
-        || (input < 4 ? 'main-grid-three ' : '')
-        || (input < 5 ? 'main-grid-four ' : '')
-        || (input < 6 ? 'main-grid-five ' : '')
-      }>
-        {randomNum?.map((item, index) => {
-          return <div draggable
-            onDragStart={(e) => handleDragStart(e, index)}
-            onDragEnter={(e) => handleDragEnter(e, index)}
-            onDragEnd={handleDrop}
-            key={index} className='grid-block'>
-            {
-              item
-            }
+          <div className={
+            (input < 3 ? 'main-gridtwo ' : '')
+            || (input < 4 ? 'main-grid-three ' : '')
+            || (input < 5 ? 'main-grid-four ' : '')
+            || (input < 6 ? 'main-grid-five ' : '')
+          }>
+            {randomNum?.map((item, index) => {
+              return <div draggable
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragEnter={(e) => handleDragEnter(e, index)}
+                onDragEnd={handleDrop}
+                key={index} className='grid-block'>
+                {
+                  item
+                }
+              </div>
+            })}
           </div>
-        })}
+        </div>
       </div>
     </div >
   );

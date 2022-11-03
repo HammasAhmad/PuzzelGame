@@ -16,15 +16,22 @@ code {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .input {
   padding: 10px;
   margin-right: 5px;
 }
-
+.bg{
+  background-color: aliceblue;
+  box-shadow: 20px;
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .btn {
   padding: 12px;
   border-radius: 5px;
