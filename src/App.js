@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 function App() {
   const [input, setInput] = useState('')
   const [message, setMessage] = useState('')
-  const [messageVal, setMessageVal] = useState(false)
   const [randomNum, setRandomNum] = useState(null)
   const dragItem = useRef();
   const dragOverItem = useRef();
@@ -35,7 +34,6 @@ function App() {
       return
     } else {
       setMessage('welcome to the team')
-      setMessageVal(true)
       setRandomNum(null)
       setTimeout(() => {
         alert('welcome to the team')
@@ -59,7 +57,6 @@ function App() {
     dragOverItem.current = null;
     setRandomNum(copyListItems);
   }
-  console.log(message)
 
   return (
     <div className="App">

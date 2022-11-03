@@ -36,7 +36,6 @@ code {
 .main-gridtwo {
   display: grid;
   justify-items: center;
-  background-color: black;
   grid-gap: 15px;
   margin-top: 50px;
   grid-template-columns: 100px 100px;
@@ -45,7 +44,6 @@ code {
 .main-grid-three {
   display: grid;
   justify-items: center;
-  background-color: black;
   grid-gap: 15px;
   margin-top: 50px;
   grid-template-columns: 100px 100px 100px;
@@ -54,7 +52,6 @@ code {
 .main-grid-four {
   display: grid;
   justify-items: center;
-  background-color: black;
   grid-gap: 15px;
   margin-top: 50px;
   grid-template-columns: 100px 100px 100px 100px;
@@ -63,7 +60,6 @@ code {
 .main-grid-five {
   display: grid;
   justify-items: center;
-  background-color: black;
   grid-gap: 15px;
   margin-top: 50px;
   grid-template-columns: 100px 100px 100px 100px 100px;
@@ -72,7 +68,7 @@ code {
 .grid-block {
   width: 80px;
   height: 80px;
-  background-color: blueviolet;
+  background-color: palevioletred;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +78,7 @@ code {
 }
 
 .border {
-  border: 2px solid blueviolet;
+  border: 2px solid palevioletred;
 
 }
 
