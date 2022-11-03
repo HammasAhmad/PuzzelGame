@@ -37,9 +37,11 @@ function App() {
       setMessage('welcome to the team')
       setMessageVal(true)
       setRandomNum(null)
+      setTimeout(() => {
+        alert('welcome to the team')
+      }, 300)
     }
-  })
-  console.log(message)
+  }, [randomNum])
 
   function handleDragStart(e, position) {
     dragItem.current = position;
@@ -57,6 +59,7 @@ function App() {
     dragOverItem.current = null;
     setRandomNum(copyListItems);
   }
+  console.log(message)
 
   return (
     <div className="App">
