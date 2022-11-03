@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.btn {
+  padding: 12px;
+  border-radius: 5px;
+  background: palevioletred;
+  color: white;
+  outline: auto;
+}
+
+.main-gridtwo {
+  display: grid;
+  justify-items: center;
+  background-color: black;
+  grid-gap: 15px;
+  margin-top: 50px;
+  grid-template-columns: 100px 100px;
+}
+
+.main-grid-three {
+  display: grid;
+  justify-items: center;
+  background-color: black;
+  grid-gap: 15px;
+  margin-top: 50px;
+  grid-template-columns: 100px 100px 100px;
+}
+
+.main-grid-four {
+  display: grid;
+  justify-items: center;
+  background-color: black;
+  grid-gap: 15px;
+  margin-top: 50px;
+  grid-template-columns: 100px 100px 100px 100px;
+}
+
+.main-grid-five {
+  display: grid;
+  justify-items: center;
+  background-color: black;
+  grid-gap: 15px;
+  margin-top: 50px;
+  grid-template-columns: 100px 100px 100px 100px 100px;
+}
+
+.grid-block {
+  width: 80px;
+  height: 80px;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  align-items: center;
+}
+
+.border {
+  border: 2px solid blueviolet;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.popup{
+  background-color: blueviolet;
+
+}
