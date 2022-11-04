@@ -3,7 +3,6 @@ import React from 'react'
 export const ImageSplitter = () => {
     const [input, setInput] = React.useState('')
     const [imga, setImg] = React.useState('')
-    const [gameDone, setGameDone] = React.useState(false)
     const [disable, setDisAble] = React.useState(false)
     const [seconds, setSeconds] = React.useState(0);
     const [minutes, setMinutes] = React.useState(0);
@@ -90,11 +89,12 @@ export const ImageSplitter = () => {
         }
         return () => clearInterval(interval);
     }, [isActive]);
+    // console.log(down)
     React.useEffect(() => {
         img.src = ''
         images()
-    }, [])
-    const handle = (e) => {
+    }, [localStorage.getItem('seconds')])
+    var handle = (e) => {
         document.getElementById('canvas').classList.remove('kk')
         images()
         e.preventDefault();
@@ -143,18 +143,17 @@ export const ImageSplitter = () => {
                 initPuzzle();
             }
 
-            function createTitle(msg) {
-                stage.fillStyle = "#000000";
-                stage.globalAlpha = 0.4;
-                stage.fillRect(100, puzzleHeight - 40, puzzleWidth - 200, 40);
-                stage.fillStyle = "#FFFFFF";
-                stage.globalAlpha = 1;
-                stage.textAlign = "center";
-                stage.textBaseline = "middle";
-                stage.font = "20px Arial";
-                stage.fillText(msg, puzzleWidth / 2, puzzleHeight - 20);
-            }
-
+            // function createTitle(msg) {
+            //     stage.fillStyle = "#000000";
+            //     stage.globalAlpha = 0.4;
+            //     stage.fillRect(100, puzzleHeight - 40, puzzleWidth - 200, 40);
+            //     stage.fillStyle = "#FFFFFF";
+            //     stage.globalAlpha = 1;
+            //     stage.textAlign = "center";
+            //     stage.textBaseline = "middle";
+            //     stage.font = "20px Arial";
+            //     stage.fillText(msg, puzzleWidth / 2, puzzleHeight - 20);
+            // }
             function buildPieces() {
                 let i;
                 let piece;
@@ -171,7 +170,7 @@ export const ImageSplitter = () => {
                         yPos += pieceHeight;
                     }
                 }
-                document.onpointerdown = shufflePuzzle;
+                document.getElementById('click').onclick = shufflePuzzle;
             }
 
             function shufflePuzzle() {
@@ -415,7 +414,7 @@ export const ImageSplitter = () => {
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
             {
                 localStorage.getItem("seconds") && <div className='btn timer'>
-                    Last Time (0{localStorage.getItem('min')}:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))})
+                    Last Time (0{localStorage.getItem('min')}m:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))}s)
                 </div>
             }
             <h1>Puzzel Game</h1>
@@ -439,9 +438,11 @@ export const ImageSplitter = () => {
             <div>
                 <canvas id="canvas"></canvas>
                 <br />
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ display:'flex',justifyContent:'center',alignItems:'center' }}>
                     {
-                        disable && (!isActive ? <button className='btn btn2' onClick={() => setIsActive(true)}>Start The Puzzel</button> : <button className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</button>)
+                        disable && (!isActive ? <button id="click" className='btn btn2' onClick={() => {
+                            setIsActive(true)
+                        }}>Start The Puzzel</button> : <p className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</p>)
                     }
                 </div>
             </div>

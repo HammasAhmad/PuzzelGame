@@ -102,18 +102,22 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: blueviolet;
 
 }
-.kk{
+
+.kk {
   display: none;
 }
-.btn2{
+
+.btn2 {
   font-weight: 600;
   font-size: 18px;
   width: 170px;
+  text-align: center;
 
 }
-.timer{
+
+.timer {
   font-size: 20px;
-  width: 150px;
+  width: 180px;
   text-align: center;
-  align-self:flex-end;
+  align-self: flex-end;
 }
