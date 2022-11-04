@@ -22,8 +22,28 @@ export const ImageSplitter = () => {
             img: 'https://static.remove.bg/remove-bg-web/ea3c274e1b7f6fbbfe93fad8b2b13d7ef352f09c/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg',
         },
         {
-            id: 4,
-            img: 'https://cdn.searchenginejournal.com/wp-content/uploads/2022/04/reverse-image-search-627b7e49986b0-sej-760x400.png'
+            id: 5,
+            img: 'https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000'
+        },
+        {
+            id: 6,
+            img: 'https://www.freecodecamp.org/news/content/images/2022/04/derick-mckinney-oARTWhz1ACc-unsplash.jpg'
+        },
+        {
+            id: 7,
+            img: 'https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/2.jpg'
+        },
+        {
+            id: 8,
+            img: 'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg'
+        },
+        {
+            id: 9,
+            img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
+        },
+        {
+            id: 10,
+            img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
         }
     ]
 
@@ -42,7 +62,7 @@ export const ImageSplitter = () => {
     let mouse;
     function images() {
         setImg('')
-        let randomNu = Math.floor(Math.random() * 4) + 1
+        let randomNu = Math.floor(Math.random() * 10) + 1
         let i = imgArr.find((it) => {
             if (it.id == randomNu) {
                 return it
@@ -143,17 +163,6 @@ export const ImageSplitter = () => {
                 initPuzzle();
             }
 
-            // function createTitle(msg) {
-            //     stage.fillStyle = "#000000";
-            //     stage.globalAlpha = 0.4;
-            //     stage.fillRect(100, puzzleHeight - 40, puzzleWidth - 200, 40);
-            //     stage.fillStyle = "#FFFFFF";
-            //     stage.globalAlpha = 1;
-            //     stage.textAlign = "center";
-            //     stage.textBaseline = "middle";
-            //     stage.font = "20px Arial";
-            //     stage.fillText(msg, puzzleWidth / 2, puzzleHeight - 20);
-            // }
             function buildPieces() {
                 let i;
                 let piece;
@@ -435,10 +444,10 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input className="btn" type="submit" value="submit" />
                 }
             </form>
-            <div>
-                <canvas id="canvas"></canvas>
+            <div >
+                <canvas width={400} height={400} id="canvas"></canvas>
                 <br />
-                <div style={{ display:'flex',justifyContent:'center',alignItems:'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {
                         disable && (!isActive ? <button id="click" className='btn btn2' onClick={() => {
                             setIsActive(true)
