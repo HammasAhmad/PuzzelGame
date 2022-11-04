@@ -73,7 +73,6 @@ export const ImageSplitter = () => {
         }
     }
     React.useEffect(() => {
-
         if (input <= 1 || input === '') {
             setInput('')
             setImg('')
@@ -85,8 +84,12 @@ export const ImageSplitter = () => {
     }, [input])
 
     function reset() {
-        setSeconds(0);
-        setIsActive(false);
+        setInput('')
+        setImg('')
+        setDisAble(false)
+        // JSON.stringify(localStorage.removeItem('seconds', seconds))
+        // JSON.stringify(localStorage.removeItem('min', minutes))
+        document.getElementById('canvas').classList.add('kk')
     }
 
     React.useEffect(() => {
@@ -116,8 +119,8 @@ export const ImageSplitter = () => {
     }, [localStorage.getItem('seconds')])
     var handle = (e) => {
         document.getElementById('canvas').classList.remove('kk')
-        images()
         e.preventDefault();
+        images()
         if (input === '') {
             alert('Please Enter A Number from 2 to 5')
             window.location.replace('/')
@@ -449,9 +452,14 @@ export const ImageSplitter = () => {
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {
-                        disable && (!isActive ? <button id="click" className='btn btn2' onClick={() => {
-                            setIsActive(true)
-                        }}>Start The Puzzel</button> : <p className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</p>)
+                        disable && (!isActive ?
+                            <>
+                                <button id="click" className='btn btn2' onClick={() => {
+                                    setIsActive(true)
+                                }}>Start The Puzzel</button>
+                                <button className='btn btn2' onClick={reset}>Reset</button>
+                            </>
+                            : <p className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</p>)
                     }
                 </div>
             </div>
