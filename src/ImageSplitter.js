@@ -3,6 +3,7 @@ import React from 'react'
 export const ImageSplitter = () => {
     const [input, setInput] = React.useState('')
     const [imga, setImg] = React.useState('')
+    const [gameDone, setGameDone] = React.useState(false)
     const [disable, setDisAble] = React.useState(false)
     const [seconds, setSeconds] = React.useState(0);
     const [minutes, setMinutes] = React.useState(0);
@@ -70,6 +71,13 @@ export const ImageSplitter = () => {
     }
 
     React.useEffect(() => {
+        if (gameDone) {
+            JSON.stringify(localStorage.setItem('seconds', seconds))
+            JSON.stringify(localStorage.setItem('min', minutes))
+        } else {
+            JSON.stringify(localStorage.setItem('seconds', seconds))
+            JSON.stringify(localStorage.setItem('min', minutes))
+        }
         let interval;
         if (seconds > 59) {
             setSeconds(0)
@@ -84,13 +92,12 @@ export const ImageSplitter = () => {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds, minutes]);
+    }, [isActive, seconds, gameDone]);
 
     React.useEffect(() => {
         img.src = ''
         images()
     }, [])
-    console.log(seconds, 'sadsad')
     const handle = (e) => {
         document.getElementById('canvas').classList.remove('kk')
         images()
@@ -372,6 +379,7 @@ export const ImageSplitter = () => {
                     }
                 }
                 if (gameWin) {
+                    setGameDone(true)
                     setTimeout(gameOver, 500);
                     setTimeout(() => {
                         alert('WellCome to the AK team')
@@ -380,6 +388,7 @@ export const ImageSplitter = () => {
                         window.location.replace('/')
                     }, 800);
                     setIsActive(false)
+
                 }
 
             }
@@ -409,6 +418,9 @@ export const ImageSplitter = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
+            <div className='btn timer'>
+                Done In (0{JSON.parse(localStorage.getItem('min'))}:{seconds > 9 ? JSON.parse(localStorage.getItem('seconds')) : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
+            </div>
             <h1>Puzzel Game</h1>
             <h3>Put Any number from 2 to 5</h3>
             <form onSubmit={handle} style={{ margin: '20px 0' }}>
@@ -432,10 +444,11 @@ export const ImageSplitter = () => {
                 <br />
                 <div style={{ textAlign: 'center' }}>
                     {
-                        !isActive ? <button className='btn btn2' onClick={() => setIsActive(true)}>Start The Puzzel</button> : <button className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</button>
+                        disable && (!isActive ? <button className='btn btn2' onClick={() => setIsActive(true)}>Start The Puzzel</button> : <button className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</button>)
                     }
                 </div>
             </div>
+
         </div >
     )
 }
