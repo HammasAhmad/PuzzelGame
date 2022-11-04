@@ -19,7 +19,7 @@ export const ImageSplitter = () => {
         },
         {
             id: 3,
-            img: 'https://static.remove.bg/remove-bg-web/ea3c274e1b7f6fbbfe93fad8b2b13d7ef352f09c/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg',
+            img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75',
         },
         {
             id: 5,
@@ -37,14 +37,14 @@ export const ImageSplitter = () => {
             id: 8,
             img: 'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg'
         },
-        {
-            id: 9,
-            img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
-        },
-        {
-            id: 10,
-            img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
-        }
+        // {
+        //     id: 9,
+        //     img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
+        // },
+        // {
+        //     id: 10,
+        //     img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
+        // }
     ]
 
     const PUZZLE_HOVER_TINT = "#009900";
@@ -62,7 +62,7 @@ export const ImageSplitter = () => {
     let mouse;
     function images() {
         setImg('')
-        let randomNu = Math.floor(Math.random() * 10) + 1
+        let randomNu = Math.floor(Math.random() * 8) + 1
         let i = imgArr.find((it) => {
             if (it.id == randomNu) {
                 return it
