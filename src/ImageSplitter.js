@@ -62,8 +62,6 @@ export const ImageSplitter = () => {
             // JSON.stringify(localStorage.removeItem('seconds', seconds))
             // JSON.stringify(localStorage.removeItem('min', minutes))
             document.getElementById('canvas').classList.add('kk')
-        } else {
-            // setDisAble(true)
         }
     }, [input])
 
@@ -377,24 +375,17 @@ export const ImageSplitter = () => {
                     }
                 }
                 if (gameWin) {
-                    // localStorage.setItem('min', minutes)
-                    // } else {
-                    //     JSON.stringify(localStorage.setItem('seconds', seconds))
-                    //     JSON.stringify(localStorage.setItem('min', minutes))
-                    // }
                     setTimeout(gameOver, 500);
-
-                    setSeconds(pre => localStorage.setItem('seconds', JSON.stringify(pre)))
                     setTimeout(() => {
                         alert('WellCome to the AK team')
                     }, 600);
-
-                    // setTimeout(() => {
-                    //     window.location.replace('/')
-                    // }, 800);
+                    setSeconds(pre => localStorage.setItem('seconds', JSON.stringify(pre)))
+                    setMinutes(pre => localStorage.setItem('min', JSON.stringify(pre)))
+                    setTimeout(() => {
+                        window.location.replace('/')
+                    }, 800);
                     setIsActive(false)
                 }
-
             }
 
             function shuffleArray(o) {
@@ -424,7 +415,7 @@ export const ImageSplitter = () => {
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
             {
                 localStorage.getItem("seconds") && <div className='btn timer'>
-                    Done In (0{localStorage.getItem('min')}:{seconds > 9 ? localStorage.getItem('seconds') : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
+                    Last Time (0{localStorage.getItem('min')}:{seconds > 9 ? localStorage.getItem('seconds') : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
                 </div>
             }
             <h1>Puzzel Game</h1>
