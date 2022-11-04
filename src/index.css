@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .App {
   width: 100%;
   margin-top: 10px;
@@ -24,7 +25,8 @@ code {
   padding: 10px;
   margin-right: 5px;
 }
-.bg{
+
+.bg {
   background-color: aliceblue;
   box-shadow: 20px;
   padding: 40px;
@@ -32,6 +34,7 @@ code {
   display: flex;
   justify-content: center;
 }
+
 .btn {
   padding: 12px;
   border-radius: 5px;
@@ -95,7 +98,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.popup{
+.popup {
   background-color: blueviolet;
 
+}
+.kk{
+  display: none;
 }
