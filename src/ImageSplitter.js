@@ -417,7 +417,7 @@ export const ImageSplitter = () => {
 
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
+        <div style={{width:'100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
             <div className='btn timer'>
                 Done In (0{JSON.parse(localStorage.getItem('min'))}:{seconds > 9 ? JSON.parse(localStorage.getItem('seconds')) : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
             </div>
