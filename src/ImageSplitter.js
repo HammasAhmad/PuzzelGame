@@ -415,7 +415,7 @@ export const ImageSplitter = () => {
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
             {
                 localStorage.getItem("seconds") && <div className='btn timer'>
-                    Last Time (0{localStorage.getItem('min')}:{seconds > 9 ? localStorage.getItem('seconds') : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
+                    Last Time (0{localStorage.getItem('min')}:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))})
                 </div>
             }
             <h1>Puzzel Game</h1>
