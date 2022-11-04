@@ -5,6 +5,7 @@ export const ImageSplitter = () => {
     const [imga, setImg] = React.useState('')
     const [disable, setDisAble] = React.useState(false)
     const [seconds, setSeconds] = React.useState(0);
+    const [minutes, setMinutes] = React.useState(0);
     const [isActive, setIsActive] = React.useState(false);
     const imgArr = [
         {
@@ -39,15 +40,6 @@ export const ImageSplitter = () => {
     let currentPiece;
     let currentDropPiece;
     let mouse;
-    function toggle() {
-        setIsActive(!isActive);
-        const time = document.getElementById("timer");
-        time.style.display = "block";
-
-        const startTime = document.getElementById("start");
-        startTime.style.opacity = 0;
-    }
-
     function images() {
         setImg('')
         let randomNu = Math.floor(Math.random() * 4) + 1
@@ -79,6 +71,11 @@ export const ImageSplitter = () => {
 
     React.useEffect(() => {
         let interval;
+        if (seconds > 59) {
+            setSeconds(0)
+            setMinutes(pre => pre + 1)
+            clearInterval(interval);
+        }
         if (isActive) {
             interval = setInterval(() => {
                 setSeconds((seconds) => seconds + 1);
@@ -87,7 +84,7 @@ export const ImageSplitter = () => {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds]);
+    }, [isActive, seconds, minutes]);
 
     React.useEffect(() => {
         img.src = ''
@@ -435,7 +432,7 @@ export const ImageSplitter = () => {
                 <br />
                 <div style={{ textAlign: 'center' }}>
                     {
-                        !isActive ? <button className='btn btn2' onClick={() => toggle()}>Start The Puzzel</button> : <button className='btn btn2'>{seconds}</button>
+                        !isActive ? <button className='btn btn2' onClick={() => setIsActive(true)}>Start The Puzzel</button> : <button className='btn btn2'>Time  0{minutes.toString()}:{seconds > 9 ? seconds.toString() : '0'.concat(seconds.toString())}</button>
                     }
                 </div>
             </div>
