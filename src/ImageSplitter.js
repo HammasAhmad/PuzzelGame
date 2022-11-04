@@ -59,6 +59,8 @@ export const ImageSplitter = () => {
             setInput('')
             setImg('')
             setDisAble(false)
+            // JSON.stringify(localStorage.removeItem('seconds', seconds))
+            // JSON.stringify(localStorage.removeItem('min', minutes))
             document.getElementById('canvas').classList.add('kk')
         } else {
             // setDisAble(true)
@@ -71,16 +73,10 @@ export const ImageSplitter = () => {
     }
 
     React.useEffect(() => {
-        if (gameDone) {
-            JSON.stringify(localStorage.setItem('seconds', seconds))
-            JSON.stringify(localStorage.setItem('min', minutes))
-        } else {
-            JSON.stringify(localStorage.setItem('seconds', seconds))
-            JSON.stringify(localStorage.setItem('min', minutes))
-        }
         let interval;
         if (seconds > 59) {
             setSeconds(0)
+            seconds = 0
             setMinutes(pre => pre + 1)
             clearInterval(interval);
         }
@@ -90,10 +86,12 @@ export const ImageSplitter = () => {
             }, 1000);
         } else if (!isActive && seconds !== 0) {
             clearInterval(interval);
+            setSeconds(0)
+            setMinutes(0)
+
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds, gameDone]);
-
+    }, [isActive]);
     React.useEffect(() => {
         img.src = ''
         images()
@@ -379,16 +377,22 @@ export const ImageSplitter = () => {
                     }
                 }
                 if (gameWin) {
-                    setGameDone(true)
+                    // localStorage.setItem('min', minutes)
+                    // } else {
+                    //     JSON.stringify(localStorage.setItem('seconds', seconds))
+                    //     JSON.stringify(localStorage.setItem('min', minutes))
+                    // }
                     setTimeout(gameOver, 500);
+
+                    setSeconds(pre => localStorage.setItem('seconds', JSON.stringify(pre)))
                     setTimeout(() => {
                         alert('WellCome to the AK team')
                     }, 600);
-                    setTimeout(() => {
-                        window.location.replace('/')
-                    }, 800);
-                    setIsActive(false)
 
+                    // setTimeout(() => {
+                    //     window.location.replace('/')
+                    // }, 800);
+                    setIsActive(false)
                 }
 
             }
@@ -417,10 +421,12 @@ export const ImageSplitter = () => {
 
 
     return (
-        <div style={{width:'100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
-            <div className='btn timer'>
-                Done In (0{JSON.parse(localStorage.getItem('min'))}:{seconds > 9 ? JSON.parse(localStorage.getItem('seconds')) : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
-            </div>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
+            {
+                localStorage.getItem("seconds") && <div className='btn timer'>
+                    Done In (0{localStorage.getItem('min')}:{seconds > 9 ? localStorage.getItem('seconds') : '0'.concat(JSON.parse(localStorage.getItem('seconds')))})
+                </div>
+            }
             <h1>Puzzel Game</h1>
             <h3>Put Any number from 2 to 5</h3>
             <form onSubmit={handle} style={{ margin: '20px 0' }}>
