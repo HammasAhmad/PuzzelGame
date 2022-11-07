@@ -10,11 +10,11 @@ export const ImageSplitter = () => {
     const imgArr = [
         {
             id: 1,
-            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png',
+            img: 'https://media.istockphoto.com/id/1354441996/photo/image-of-open-antique-book-on-wooden-table-with-glitter-overlay.jpg?b=1&s=170667a&w=0&k=20&c=O_VZbgONe4WTXPOEvwKYezhqFkzAXpr2g-lCdpdj5FU=',
         },
         {
             id: 2,
-            img: 'https://static.remove.bg/remove-bg-web/ea3c274e1b7f6fbbfe93fad8b2b13d7ef352f09c/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg',
+            img: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg',
 
         },
         {
@@ -22,29 +22,11 @@ export const ImageSplitter = () => {
             img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75',
         },
         {
-            id: 5,
-            img: 'https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000'
+            id: 4,
+            img: 'https://media.istockphoto.com/id/535695503/photo/pakistan-monument-islamabad.jpg?s=612x612&w=0&k=20&c=bNqjdf8L-5igcRB89DdMgx0kNOmyeo1J_zzXmoxxl8w='
         },
-        {
-            id: 6,
-            img: 'https://www.freecodecamp.org/news/content/images/2022/04/derick-mckinney-oARTWhz1ACc-unsplash.jpg'
-        },
-        {
-            id: 7,
-            img: 'https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/2.jpg'
-        },
-        {
-            id: 8,
-            img: 'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg'
-        },
-        // {
-        //     id: 9,
-        //     img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
-        // },
-        // {
-        //     id: 10,
-        //     img: 'https://imgd.aeplcdn.com/1056x594/n/cw/ec/58025/right-front-three-quarter.jpeg?q=75'
-        // }
+
+
     ]
 
     const PUZZLE_HOVER_TINT = "#009900";
@@ -62,7 +44,7 @@ export const ImageSplitter = () => {
     let mouse;
     function images() {
         setImg('')
-        let randomNu = Math.floor(Math.random() * 8) + 1
+        let randomNu = Math.floor(Math.random() * 4) + 1
         let i = imgArr.find((it) => {
             if (it.id == randomNu) {
                 return it
@@ -87,8 +69,7 @@ export const ImageSplitter = () => {
         setInput('')
         setImg('')
         setDisAble(false)
-        // JSON.stringify(localStorage.removeItem('seconds', seconds))
-        // JSON.stringify(localStorage.removeItem('min', minutes))
+        window.location.replace('/')
         document.getElementById('canvas').classList.add('kk')
     }
 
@@ -112,14 +93,13 @@ export const ImageSplitter = () => {
         }
         return () => clearInterval(interval);
     }, [isActive]);
-    // console.log(down)
     React.useEffect(() => {
         img.src = ''
         images()
     }, [localStorage.getItem('seconds')])
     var handle = (e) => {
-        document.getElementById('canvas').classList.remove('kk')
         e.preventDefault();
+        document.getElementById('canvas').classList.remove('kk')
         images()
         if (input === '') {
             alert('Please Enter A Number from 2 to 5')
