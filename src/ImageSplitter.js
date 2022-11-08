@@ -139,7 +139,6 @@ export const ImageSplitter = () => {
                 setCanvas();
                 initPuzzle();
             }
-
             function buildPieces() {
                 let i;
                 let piece;
@@ -156,7 +155,6 @@ export const ImageSplitter = () => {
                         yPos += pieceHeight;
                     }
                 }
-
                 document.getElementById('click').addEventListener('click', shufflePuzzle)
 
             }
@@ -419,7 +417,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas id="canvas" width={400}></canvas>
+            <canvas id="canvas"></canvas>
 
             <div >
                 <br />
