@@ -422,7 +422,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input disabled={toast} className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas id="canvas" touch-actions="none"></canvas>
+            <canvas id="canvas" touch-action="none"></canvas>
 
             <div >
                 <br />
