@@ -422,7 +422,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input disabled={toast} className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" touch-action="none"></canvas>
 
             <div >
                 <br />
@@ -442,7 +442,7 @@ export const ImageSplitter = () => {
                     }
                 </div>
             </div>
-            {toast && <Toaster toaster={toast} />}
+            {/* {toast && <Toaster toaster={toast} />} */}
 
         </div >
     )
