@@ -1,12 +1,17 @@
 import React from 'react'
+import { Toaster } from './Toaster'
+import { toast } from 'react-toastify';
+
 
 export const ImageSplitter = () => {
     const [input, setInput] = React.useState('')
     const [imga, setImg] = React.useState('')
+    const [toast, setToast] = React.useState(false)
     const [disable, setDisAble] = React.useState(false)
     const [seconds, setSeconds] = React.useState(0);
     const [minutes, setMinutes] = React.useState(0);
     const [isActive, setIsActive] = React.useState(false);
+
     const imgArr = [
         {
             id: 1,
@@ -132,7 +137,6 @@ export const ImageSplitter = () => {
             }
 
             function onImage() {
-                console.log(img.width)
                 pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(370 / difficulty) : Math.floor(img.width / difficulty);
                 pieceHeight = Math.floor(img.height / difficulty);
                 puzzleWidth = pieceWidth * difficulty;
@@ -359,13 +363,13 @@ export const ImageSplitter = () => {
                 if (gameWin) {
                     setTimeout(gameOver, 500);
                     setTimeout(() => {
-                        alert('WelCome to the AK team')
-                    }, 600);
+                        setToast(true)
+                    }, 200);
                     setSeconds(pre => localStorage.setItem('seconds', JSON.stringify(pre)))
                     setMinutes(pre => localStorage.setItem('min', JSON.stringify(pre)))
                     setTimeout(() => {
                         window.location.replace('/')
-                    }, 800);
+                    }, 5000);
                     setIsActive(false)
                 }
             }
@@ -415,10 +419,10 @@ export const ImageSplitter = () => {
                         setInput(e.target.value)
                     }
                 }} id="difficulty" />
-                {disable ? '' : <input className="btn" type="submit" value="submit" />
+                {disable ? '' : <input disabled={toast} className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas id="canvas" width={200} height={200}></canvas>
+            <canvas id="canvas"></canvas>
 
             <div >
                 <br />
@@ -437,8 +441,8 @@ export const ImageSplitter = () => {
                             </>)
                     }
                 </div>
-
             </div>
+            {toast && <Toaster toaster={toast} />}
 
         </div >
     )
