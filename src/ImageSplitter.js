@@ -10,27 +10,29 @@ export const ImageSplitter = () => {
     const imgArr = [
         {
             id: 1,
-            img: 'https://pixabay.com/get/gfe44f948f47da3a3749bd009fa26f254128dfaa5cffa411585ed061fd2d4800ac5a1f097dc6e270ccddd801dfb0f8cecf17e4f1c2e74e78aa7e3f20baaa57658c56d77dae041d95e813842b9aaf6d276_640.jpg',
+            img: './images/cat-g093a4942a_640.jpg'
         },
         {
             id: 2,
-            img: 'https://pixabay.com/get/g286833db14e433a9fbdb589a14381c13ce723c1004301ffe0934642f0a91057818b93c42df8a9e148f5facd5f9c65f43b95c164cd0c4997f2e3d50fd06e011c505671d6c72d0b0008977882c36d6f560_640.jpg',
+            img: './images/imagedd.png'
 
         },
         {
             id: 3,
-            img: 'https://pixabay.com/get/g03758e112c08e3c27524a0865c3871e4224b3b1baa170dd41645661d8135034034f080762fd8f5ef351810779141d96199325fbae71e8a265874663b86da532c1254089b7d077ddcae44079b1cc89efb_640.jpg',
+            img: './images/coffee-g1b6de59fb_640.jpg'
         },
         {
             id: 4,
-            img: 'https://pixabay.com/get/ga03001c34d2146c8d05415fe1348bd7ee94235fff7b3c92ba326a9b911a2bfd6b606c609942793d243e643bbdb4a6d7f4762c385abb5f204c87bea728c1a6ac2656cdbe865b7075dfbe970556df8b6ac_640.jpg'
+            img: './images/duck-g4e80db883_640.jpg'
         },
         {
             id: 5,
-            img: 'https://pixabay.com/get/g2cea037a912475cfd8202ad6436f3cffaec1f58344746db584e14d2b3e32e9d70533e2c51f54b83f9b92eb38c3bc311568293a3e7670f8fa504fa0655875bf214b7caaee4ba69b8f66c4488c741665e9_640.jpg'
+            img: './images/italy-gc121ecdbc_640.jpg'
         },
-
-
+        {
+            id: 6,
+            img: './images/venice-g63213db8d_640.jpg'
+        },
     ]
 
     const PUZZLE_HOVER_TINT = "#009900";
@@ -104,7 +106,7 @@ export const ImageSplitter = () => {
         } else {
 
             img.addEventListener("load", onImage, false);
-            img.src = imga?.img
+            img.src = imga.img
             function initPuzzle() {
                 pieces = [];
                 mouse = {
@@ -159,7 +161,9 @@ export const ImageSplitter = () => {
                         yPos += pieceHeight;
                     }
                 }
-                document.getElementById('click').onclick = shufflePuzzle;
+
+                document.getElementById('click').addEventListener('click', shufflePuzzle)
+
             }
 
             function shufflePuzzle() {
@@ -260,8 +264,8 @@ export const ImageSplitter = () => {
                 stage.globalAlpha = 0.6;
                 stage.drawImage(
                     img,
-                    currentPiece.sx,
-                    currentPiece.sy,
+                    currentPiece?.sx,
+                    currentPiece?.sy,
                     pieceWidth,
                     pieceHeight,
                     mouse.x - pieceWidth / 2,
@@ -310,18 +314,14 @@ export const ImageSplitter = () => {
                     stage.restore();
                     document.onpointermove = updatePuzzle;
                     document.onpointerup = pieceDropped;
+
+
                 }
             }
-
             function gameOver() {
                 document.onpointerdown = null;
                 document.onpointermove = null;
                 document.onpointerup = null;
-
-
-                // setTimeout(() => {
-                // alert('welcome to ak team')
-                // }, 500)
                 // initPuzzle();
                 setInput('')
             }
@@ -425,7 +425,7 @@ export const ImageSplitter = () => {
                 }
             </form>
             <div >
-                <canvas width={400} height={400} id="canvas"></canvas>
+                <canvas id="canvas"></canvas>
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {
@@ -442,6 +442,7 @@ export const ImageSplitter = () => {
                             </>)
                     }
                 </div>
+
             </div>
 
         </div >
