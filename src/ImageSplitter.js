@@ -14,23 +14,18 @@ export const ImageSplitter = () => {
         },
         {
             id: 2,
-            img: './images/imagedd.png'
-
-        },
-        {
-            id: 3,
             img: './images/coffee-g1b6de59fb_640.jpg'
         },
         {
-            id: 4,
+            id: 3,
             img: './images/duck-g4e80db883_640.jpg'
         },
         {
-            id: 5,
+            id: 4,
             img: './images/italy-gc121ecdbc_640.jpg'
         },
         {
-            id: 6,
+            id: 5,
             img: './images/venice-g63213db8d_640.jpg'
         },
     ]
@@ -424,7 +419,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input className="btn" type="submit" value="submit" />
                 }
             </form>
-            <div >
+            <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
                 <canvas id="canvas"></canvas>
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
