@@ -419,8 +419,9 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input className="btn" type="submit" value="submit" />
                 }
             </form>
-            <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <canvas id="canvas"></canvas>
+            <canvas id="canvas" width={400}></canvas>
+
+            <div >
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {
