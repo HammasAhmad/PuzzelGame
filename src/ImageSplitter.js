@@ -133,7 +133,7 @@ export const ImageSplitter = () => {
 
             function onImage() {
                 console.log(img.width)
-                pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(380 / difficulty) : Math.floor(img.width / difficulty);
+                pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(370 / difficulty) : Math.floor(img.width / difficulty);
                 pieceHeight = Math.floor(img.height / difficulty);
                 puzzleWidth = pieceWidth * difficulty;
                 puzzleHeight = pieceHeight * difficulty;
