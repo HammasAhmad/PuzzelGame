@@ -132,7 +132,8 @@ export const ImageSplitter = () => {
             }
 
             function onImage() {
-                pieceWidth = Math.floor(img.width / difficulty);
+                console.log(img.width)
+                pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(380 / difficulty) : Math.floor(img.width / difficulty);
                 pieceHeight = Math.floor(img.height / difficulty);
                 puzzleWidth = pieceWidth * difficulty;
                 puzzleHeight = pieceHeight * difficulty;
@@ -417,7 +418,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" width={200} height={200}></canvas>
 
             <div >
                 <br />
