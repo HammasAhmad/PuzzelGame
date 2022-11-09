@@ -10,7 +10,7 @@ export function Toaster({ toaster }) {
     React.useEffect(() => {
         if (toaster === true) {
             notify()
-            // winner.play()
+            winner.play()
         }
 
     }, [])
@@ -26,7 +26,7 @@ export function Toaster({ toaster }) {
                 rtl={false}
                 pauseOnFocusLoss={false}
                 draggable
-            
+
             />
         </div>
     );

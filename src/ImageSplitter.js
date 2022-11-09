@@ -1,9 +1,10 @@
 import React from 'react'
 import { Toaster } from './Toaster'
 import { toast } from 'react-toastify';
-
-
+import { useReward } from "react-rewards";
+import { useEffect,useState } from 'react';
 export const ImageSplitter = () => {
+    const [welcomeConf,setwelcomeConf]=useState(false)
     const [input, setInput] = React.useState('')
     const [imga, setImg] = React.useState('')
     const [toast, setToast] = React.useState(false)
@@ -168,7 +169,7 @@ export const ImageSplitter = () => {
             function onImage() {
                 // pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(270 / difficulty) : Math.floor(img.width / difficulty);
                 pieceWidth = Math.floor(img.width / difficulty);
-                // pieceHeight = window.matchMedia("(max-height: 800px)").matches ? Math.floor(870 / difficulty) : Math.floor(img.height / difficulty);
+                // pieceHeight = window.matchMedia("(max-height: 800px)").matches ? Math.floor(770 / difficulty) : Math.floor(img.height / difficulty);
                 pieceHeight = Math.floor(img.height / difficulty);
                 puzzleWidth = pieceWidth * difficulty;
                 puzzleHeight = pieceHeight * difficulty;
@@ -192,6 +193,7 @@ export const ImageSplitter = () => {
                     }
                 }
                 document.getElementById('click').addEventListener('click', shufflePuzzle)
+
             }
 
             function shufflePuzzle() {
@@ -241,14 +243,13 @@ export const ImageSplitter = () => {
 
             function updatePuzzle(e) {
                 currentDropPiece = null;
-                if (e.layerX || e.layerX == 0) {
-                    mouse.x = e.layerX - canvas.offsetLeft;
-                    mouse.y = e.layerY - canvas.offsetTop;
+                if (e.clientX || e.clientX == 0) {
+                    mouse.x = e.clientX - canvas.offsetLeft;
+                    mouse.y = e.clientY - canvas.offsetTop;
                 } else if (e.offsetX || e.offsetX == 0) {
                     mouse.x = e.offsetX - canvas.offsetLeft;
                     mouse.y = e.offsetY - canvas.offsetTop;
                 }
-
                 stage.clearRect(0, 0, puzzleWidth, puzzleHeight);
                 for (const piece of pieces) {
                     if (piece == currentPiece) {
@@ -312,9 +313,9 @@ export const ImageSplitter = () => {
             }
 
             function onPuzzleClick(e) {
-                if (e?.layerX || e?.layerX === 0) {
-                    mouse.x = e?.layerX - canvas.offsetLeft;
-                    mouse.y = e?.layerY - canvas.offsetTop;
+                if (e?.clientX || e?.clientX === 0) {
+                    mouse.x = e?.clientX - canvas.offsetLeft;
+                    mouse.y = e?.clientY - canvas.offsetTop;
                 } else if (e?.offsetX || e?.offsetX === 0) {
                     mouse.x = e?.offsetX - canvas.offsetLeft;
                     mouse.y = e?.offsetY - canvas.offsetTop;
@@ -344,12 +345,14 @@ export const ImageSplitter = () => {
                     document.onpointermove = updatePuzzle;
                     document.onpointerup = pieceDropped;
 
+
                 }
             }
             function gameOver() {
                 document.onpointerdown = null;
                 document.onpointermove = null;
                 document.onpointerup = null;
+
                 initPuzzle();
                 setInput('')
             }
@@ -395,6 +398,7 @@ export const ImageSplitter = () => {
                     setTimeout(() => {
                         setToast(true)
                     }, 200);
+                    setwelcomeConf(true)
                     setSeconds(pre => localStorage.setItem('seconds', JSON.stringify(pre)))
                     setMinutes(pre => localStorage.setItem('min', JSON.stringify(pre)))
                     setTimeout(() => {
@@ -425,10 +429,30 @@ export const ImageSplitter = () => {
             setDisAble(true)
         }
     }
-
+    const config = {
+        elementCount: 200,
+        elementSize: 8,
+        spread: 150,
+        zIndex: 9999,
+        lifetime: 500,
+        startVelocity: 30,
+    };
+    useEffect(() => {
+        if (welcomeConf === true) {
+            confettiReward();
+            
+       
+        }
+    }, [welcomeConf]);
+    const { reward: confettiReward, isAnimating: isConfettiAnimating } =
+        useReward("confettiReward", "confetti", config);
 
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
+            <span
+                    id="confettiReward"
+                    className="z-[100] flex justify-center items-center"
+                />
             {
                 localStorage.getItem("seconds") && <div className='btn timer'>
                     Last Time (0{localStorage.getItem('min')}m:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))}s)
