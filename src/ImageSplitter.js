@@ -191,6 +191,9 @@ export const ImageSplitter = () => {
                     }
                 }
                 document.onpointerdown = onPuzzleClick;
+                document.addEventListener('touchstart', () => {
+                    onPuzzleClick()
+                })
             }
 
             function checkPieceClicked() {
@@ -281,12 +284,12 @@ export const ImageSplitter = () => {
             }
 
             function onPuzzleClick(e) {
-                if (e.layerX || e.layerX === 0) {
-                    mouse.x = e.layerX - canvas.offsetLeft;
-                    mouse.y = e.layerY - canvas.offsetTop;
-                } else if (e.offsetX || e.offsetX === 0) {
-                    mouse.x = e.offsetX - canvas.offsetLeft;
-                    mouse.y = e.offsetY - canvas.offsetTop;
+                if (e?.layerX || e?.layerX === 0) {
+                    mouse.x = e?.layerX - canvas.offsetLeft;
+                    mouse.y = e?.layerY - canvas.offsetTop;
+                } else if (e?.offsetX || e?.offsetX === 0) {
+                    mouse.x = e?.offsetX - canvas.offsetLeft;
+                    mouse.y = e?.offsetY - canvas.offsetTop;
                 }
                 currentPiece = checkPieceClicked();
                 if (currentPiece !== null) {
@@ -313,6 +316,15 @@ export const ImageSplitter = () => {
                     document.onpointermove = updatePuzzle;
                     document.onpointerup = pieceDropped;
 
+                    document.addEventListener('touchmove', () => {
+                        updatePuzzle()
+                    })
+                    document.addEventListener('touchend', (e) => {
+                        e.preventDefault()
+                        updatePuzzle()
+                    })
+
+
 
                 }
             }
@@ -320,7 +332,23 @@ export const ImageSplitter = () => {
                 document.onpointerdown = null;
                 document.onpointermove = null;
                 document.onpointerup = null;
-                // initPuzzle();
+                // document.addEventListener('touchend', (e) => {
+                //     e.preventDefault()
+                //     updatePuzzle()
+                // })
+                // document.addEventListener('touchmove', () => {
+                //     updatePuzzle()
+                // })
+                // document.addEventListener('touchend', (e) => {
+                //     e.preventDefault()
+                //     updatePuzzle()
+                // })
+
+                document.addEventListener('touchcancel', (e) => {
+                    e.preventDefault()
+                })
+
+                initPuzzle();
                 setInput('')
             }
 
@@ -422,7 +450,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input disabled={toast} className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas id="canvas" touch-action="none"></canvas>
+            <canvas draggable id="canvas" touch-action="none"></canvas>
 
             <div >
                 <br />

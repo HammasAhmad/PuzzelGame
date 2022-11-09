@@ -10,7 +10,7 @@ export function Toaster({ toaster }) {
     React.useEffect(() => {
         if (toaster === true) {
             notify()
-            winner.play()
+            // winner.play()
         }
 
     }, [])
