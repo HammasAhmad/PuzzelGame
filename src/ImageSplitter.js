@@ -1,10 +1,9 @@
 import React from 'react'
 import { Toaster } from './Toaster'
-import { toast } from 'react-toastify';
 import { useReward } from "react-rewards";
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 export const ImageSplitter = () => {
-    const [welcomeConf,setwelcomeConf]=useState(false)
+    const [welcomeConf, setwelcomeConf] = useState(false)
     const [input, setInput] = React.useState('')
     const [imga, setImg] = React.useState('')
     const [toast, setToast] = React.useState(false)
@@ -13,7 +12,7 @@ export const ImageSplitter = () => {
     const [minutes, setMinutes] = React.useState(0);
     const [isActive, setIsActive] = React.useState(false);
 
-    const imgArr = [
+    const img1 = [
         {
             id: 1,
             img: './images/cat-g093a4942a_640.jpg'
@@ -35,26 +34,26 @@ export const ImageSplitter = () => {
             img: './images/venice-g63213db8d_640.jpg'
         },
     ]
-    const imgArr2 = [
+    const img2 = [
         {
             id: 1,
-            img: './images2/cat-g093a4942a_640.jpg'
+            img: './images3/cat-g093a4942a_640.jpg'
         },
         {
             id: 2,
-            img: './images2/coffee-g1b6de59fb_640.jpg'
+            img: './images3/coffee-g1b6de59fb_640.jpg'
         },
         {
             id: 3,
-            img: './images2/duck-g4e80db883_640.jpg'
+            img: './images3/duck-g4e80db883_640.jpg'
         },
         {
             id: 4,
-            img: './images2/italy-gc121ecdbc_640.jpg'
+            img: './images3/italy-gc121ecdbc_640.jpg'
         },
         {
             id: 5,
-            img: './images2/venice-g63213db8d_640.jpg'
+            img: './images3/venice-g63213db8d_640.jpg'
         },
     ]
 
@@ -73,16 +72,13 @@ export const ImageSplitter = () => {
     let mouse;
     function images() {
         setImg('')
-        let i = ''
         let randomNu = Math.floor(Math.random() * 5) + 1
         if (window.matchMedia("(max-width: 548px)").matches) {
-            imagfind(imgArr2, randomNu)
+            imagfind(img2, randomNu)
         } else {
-            imagfind(imgArr, randomNu)
+            imagfind(img1, randomNu)
         }
-
     }
-
     function imagfind(params, randomNu) {
         params.find((it) => {
             if (it.id == randomNu) {
@@ -156,7 +152,6 @@ export const ImageSplitter = () => {
                     puzzleWidth,
                     puzzleHeight
                 );
-                // createTitle("Click to Start Puzzle");
                 buildPieces();
             }
 
@@ -167,9 +162,7 @@ export const ImageSplitter = () => {
             }
 
             function onImage() {
-                // pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(270 / difficulty) : Math.floor(img.width / difficulty);
                 pieceWidth = Math.floor(img.width / difficulty);
-                // pieceHeight = window.matchMedia("(max-height: 800px)").matches ? Math.floor(770 / difficulty) : Math.floor(img.height / difficulty);
                 pieceHeight = Math.floor(img.height / difficulty);
                 puzzleWidth = pieceWidth * difficulty;
                 puzzleHeight = pieceHeight * difficulty;
@@ -440,8 +433,8 @@ export const ImageSplitter = () => {
     useEffect(() => {
         if (welcomeConf === true) {
             confettiReward();
-            
-       
+
+
         }
     }, [welcomeConf]);
     const { reward: confettiReward, isAnimating: isConfettiAnimating } =
@@ -450,9 +443,9 @@ export const ImageSplitter = () => {
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flex: '0' }}>
             <span
-                    id="confettiReward"
-                    className="z-[100] flex justify-center items-center"
-                />
+                id="confettiReward"
+                className="z-[100] flex justify-center items-center"
+            />
             {
                 localStorage.getItem("seconds") && <div className='btn timer'>
                     Puzzel Solved In (0{localStorage.getItem('min')}m:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))}s)
