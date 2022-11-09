@@ -455,7 +455,7 @@ export const ImageSplitter = () => {
                 />
             {
                 localStorage.getItem("seconds") && <div className='btn timer'>
-                    Last Time (0{localStorage.getItem('min')}m:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))}s)
+                    Puzzel Solved In (0{localStorage.getItem('min')}m:{localStorage.getItem('seconds') >= 10 ? localStorage.getItem('seconds') : '0'.concat(localStorage.getItem('seconds'))}s)
                 </div>
             }
             <h1>Puzzle Game</h1>
