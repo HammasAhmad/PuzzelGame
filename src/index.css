@@ -16,6 +16,7 @@ code {
   width: 100%;
   margin-top: 10px;
   display: flex;
+  /* touch-action: none; */
   flex-direction: column;
 }
 
@@ -108,6 +109,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 #canvas {
   touch-action: none;
+
 }
 
 .popup {
@@ -133,7 +135,7 @@ input[type=number]::-webkit-outer-spin-button {
   align-self: flex-end;
 }
 
-@media (min-width:768px) {
+@media (min-width:548px) {
   #canvas {
     width: 700px;
     height: 500px;

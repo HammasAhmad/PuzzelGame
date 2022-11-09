@@ -34,6 +34,28 @@ export const ImageSplitter = () => {
             img: './images/venice-g63213db8d_640.jpg'
         },
     ]
+    const imgArr2 = [
+        {
+            id: 1,
+            img: './images2/cat-g093a4942a_640.jpg'
+        },
+        {
+            id: 2,
+            img: './images2/coffee-g1b6de59fb_640.jpg'
+        },
+        {
+            id: 3,
+            img: './images2/duck-g4e80db883_640.jpg'
+        },
+        {
+            id: 4,
+            img: './images2/italy-gc121ecdbc_640.jpg'
+        },
+        {
+            id: 5,
+            img: './images2/venice-g63213db8d_640.jpg'
+        },
+    ]
 
     const PUZZLE_HOVER_TINT = "#009900";
     let img = new Image()
@@ -50,15 +72,22 @@ export const ImageSplitter = () => {
     let mouse;
     function images() {
         setImg('')
+        let i = ''
         let randomNu = Math.floor(Math.random() * 5) + 1
-        let i = imgArr.find((it) => {
+        if (window.matchMedia("(max-width: 548px)").matches) {
+            imagfind(imgArr2, randomNu)
+        } else {
+            imagfind(imgArr, randomNu)
+        }
+
+    }
+
+    function imagfind(params, randomNu) {
+        params.find((it) => {
             if (it.id == randomNu) {
-                return it
+                setImg(it)
             }
         })
-        if (i !== undefined) {
-            setImg(i)
-        }
     }
     React.useEffect(() => {
         if (input <= 1 || input === '') {
@@ -137,7 +166,9 @@ export const ImageSplitter = () => {
             }
 
             function onImage() {
-                pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(370 / difficulty) : Math.floor(img.width / difficulty);
+                // pieceWidth = window.matchMedia("(max-width: 768px)").matches ? Math.floor(270 / difficulty) : Math.floor(img.width / difficulty);
+                pieceWidth = Math.floor(img.width / difficulty);
+                // pieceHeight = window.matchMedia("(max-height: 800px)").matches ? Math.floor(870 / difficulty) : Math.floor(img.height / difficulty);
                 pieceHeight = Math.floor(img.height / difficulty);
                 puzzleWidth = pieceWidth * difficulty;
                 puzzleHeight = pieceHeight * difficulty;
@@ -161,7 +192,6 @@ export const ImageSplitter = () => {
                     }
                 }
                 document.getElementById('click').addEventListener('click', shufflePuzzle)
-
             }
 
             function shufflePuzzle() {
@@ -191,9 +221,6 @@ export const ImageSplitter = () => {
                     }
                 }
                 document.onpointerdown = onPuzzleClick;
-                document.addEventListener('touchstart', () => {
-                    onPuzzleClick()
-                })
             }
 
             function checkPieceClicked() {
@@ -221,6 +248,7 @@ export const ImageSplitter = () => {
                     mouse.x = e.offsetX - canvas.offsetLeft;
                     mouse.y = e.offsetY - canvas.offsetTop;
                 }
+
                 stage.clearRect(0, 0, puzzleWidth, puzzleHeight);
                 for (const piece of pieces) {
                     if (piece == currentPiece) {
@@ -316,38 +344,12 @@ export const ImageSplitter = () => {
                     document.onpointermove = updatePuzzle;
                     document.onpointerup = pieceDropped;
 
-                    document.addEventListener('touchmove', () => {
-                        updatePuzzle()
-                    })
-                    document.addEventListener('touchend', (e) => {
-                        e.preventDefault()
-                        updatePuzzle()
-                    })
-
-
-
                 }
             }
             function gameOver() {
                 document.onpointerdown = null;
                 document.onpointermove = null;
                 document.onpointerup = null;
-                // document.addEventListener('touchend', (e) => {
-                //     e.preventDefault()
-                //     updatePuzzle()
-                // })
-                // document.addEventListener('touchmove', () => {
-                //     updatePuzzle()
-                // })
-                // document.addEventListener('touchend', (e) => {
-                //     e.preventDefault()
-                //     updatePuzzle()
-                // })
-
-                document.addEventListener('touchcancel', (e) => {
-                    e.preventDefault()
-                })
-
                 initPuzzle();
                 setInput('')
             }
@@ -450,7 +452,7 @@ export const ImageSplitter = () => {
                 {disable ? '' : <input disabled={toast} className="btn" type="submit" value="submit" />
                 }
             </form>
-            <canvas draggable id="canvas" touch-action="none"></canvas>
+            <canvas id="canvas" ></canvas>
 
             <div >
                 <br />
