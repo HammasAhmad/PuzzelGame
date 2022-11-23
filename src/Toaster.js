@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export function Toaster({ toaster }) {
-    const notify = () => toast("WelCome to AK Team!");
+    const notify = () => toast("Congrats You Win!");
     let winner = new Audio('./music/winner.mp3')
 
     React.useEffect(() => {
