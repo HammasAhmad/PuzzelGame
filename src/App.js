@@ -2,61 +2,61 @@
 import { ImageSplitter } from "./ImageSplitter";
 
 function App() {
-  // const [input, setInput] = useState('')
-  // const [message, setMessage] = useState('')
-  // const [randomNum, setRandomNum] = useState(null)
-  // const dragItem = useRef();
-  // const dragOverItem = useRef();
-  // let val = (input * input)
-  // const isAscending = (array) => array !== '' ? array?.map((a, i) => a > array[i + 1]).indexOf(true) === -1 : ''
-  // function handler(e) {
-  //   e.preventDefault()
-  //   if (input === '') {
-  //     return
-  //   } else {
-  //     let random = []
-  //     for (let i = 0; i < val; i++) {
-  //       random.push(i + 1)
-  //     }
-  //     let newArr = random.sort(() => Math.random() - 0.5)
-  //     setRandomNum([...newArr])
-  //   }
-  // }
-  // useEffect(() => {
-  //   if (input <= 1 || input === '') {
-  //     setRandomNum(null)
-  //     setMessage('')
-  //   }
-  // }, [input])
+  const [input, setInput] = useState('')
+  const [message, setMessage] = useState('')
+  const [randomNum, setRandomNum] = useState(null)
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+  let val = (input * input)
+  const isAscending = (array) => array !== '' ? array?.map((a, i) => a > array[i + 1]).indexOf(true) === -1 : ''
+  function handler(e) {
+    e.preventDefault()
+    if (input === '') {
+      return
+    } else {
+      let random = []
+      for (let i = 0; i < val; i++) {
+        random.push(i + 1)
+      }
+      let newArr = random.sort(() => Math.random() - 0.5)
+      setRandomNum([...newArr])
+    }
+  }
+  useEffect(() => {
+    if (input <= 1 || input === '') {
+      setRandomNum(null)
+      setMessage('')
+    }
+  }, [input])
 
-  // useEffect(() => {
-  //   if (isAscending(randomNum) !== true) {
-  //     return
-  //   } else {
-  //     setMessage('welcome to the team')
-  //     setRandomNum(null)
-  //     setTimeout(() => {
-  //       alert('welcome to the team')
-  //     }, 300)
-  //   }
-  // }, [randomNum])
+  useEffect(() => {
+    if (isAscending(randomNum) !== true) {
+      return
+    } else {
+      setMessage('welcome to the team')
+      setRandomNum(null)
+      setTimeout(() => {
+        alert('welcome to the team')
+      }, 300)
+    }
+  }, [randomNum])
 
-  // function handleDragStart(e, position) {
-  //   dragItem.current = position;
-  // }
-  // function handleDragEnter(e, position) {
-  //   dragOverItem.current = position;
-  // }
+  function handleDragStart(e, position) {
+    dragItem.current = position;
+  }
+  function handleDragEnter(e, position) {
+    dragOverItem.current = position;
+  }
 
-  // function handleDrop() {
-  //   const copyListItems = [...randomNum];
-  //   const dragItemContent = copyListItems[dragItem.current];
-  //   copyListItems.splice(dragItem.current, 1);
-  //   copyListItems.splice(dragOverItem.current, 0, dragItemContent);
-  //   dragItem.current = null;
-  //   dragOverItem.current = null;
-  //   setRandomNum(copyListItems);
-  // }
+  function handleDrop() {
+    const copyListItems = [...randomNum];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setRandomNum(copyListItems);
+  }
 
   return (
     // <ImageSplitter />
