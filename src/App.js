@@ -22,7 +22,6 @@ function App() {
       setRandomNum([...newArr])
     }
   }
-  console.log({ randomNum })
   useEffect(() => {
     if (input <= 1 || input === '') {
       setRandomNum(null)
@@ -63,9 +62,9 @@ function App() {
     // <ImageSplitter />
 
     <div className="App">
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+       <div style={{ display: 'flex', justifyContent: 'center' }}>
       </div>
-      <div className="w-full h-screen bg  shadow-xl">
+     <div className="w-full h-screen bg  shadow-xl">
         <div style={{ width: '500px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <form onSubmit={handler} style={{ margin: '20px 0' }}>
             <input className="input" type="number" min={1} value={input} onChange={(e) => {
